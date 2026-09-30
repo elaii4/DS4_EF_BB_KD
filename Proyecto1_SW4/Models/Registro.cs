@@ -12,13 +12,13 @@ namespace Proyecto1_SW4.Models
     public class Registro
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public string? Nombre { get; set; }
+        public string? Apellido { get; set; }
         public int Edad { get; set; }
-        public string Genero { get; set; }
-        public string Email { get; set; }
-        public string Telefono { get; set; }
-        public string Usuario { get; set; }
+        public string? Genero { get; set; }
+        public string? Email { get; set; }
+        public string? Telefono { get; set; }
+        public string? Usuario { get; set; }
 
         // Muestra una representación comprensible en el ListBox
         public override string ToString()
@@ -48,12 +48,12 @@ namespace Proyecto1_SW4.Models
     public class DummyJsonUser
     {
         public int id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string? firstName { get; set; }
+        public string? lastName { get; set; }
         public int age { get; set; }
-        public string gender { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string username { get; set; }
+        public string? gender { get; set; }
+        public string? email { get; set; }
+        public string? phone { get; set; }
+        public string? username { get; set; }
     }
 }

@@ -22,9 +22,9 @@ namespace Proyecto1_SW4
         private ApiService _apiService;
         private JsonService _jsonService;
         private CsvService _csvService;
-        
+
         // Almacenamos la última ruta guardada para abrirla fácilmente
-        private string _ultimoArchivoGuardado;
+        private string? _ultimoArchivoGuardado;
 
         public Form1()
         {
@@ -33,20 +33,34 @@ namespace Proyecto1_SW4
             _apiService = new ApiService();
             _jsonService = new JsonService();
             _csvService = new CsvService();
-            
+
             ConfigurarListView();
-            
+
             // Configurar opciones por defecto
             rBtnJSON.Checked = true;
             lblEstado.Text = "No conectado";
             pbBarraPDescarga.Value = 0;
             lblPorcentaje.Text = "0%";
             lblDescargando.Text = "Esperando...";
-            
+
             comBoxArchivos.Items.Add("Navegador predeterminado");
             comBoxArchivos.Items.Add("Bloc de notas");
             if (comBoxArchivos.Items.Count > 0)
                 comBoxArchivos.SelectedIndex = 0;
+                
+            AgregarLog("Sistema inicializado correctamente. Listo para recibir instrucciones.");
+        }
+
+        private void AgregarLog(string mensaje)
+        {
+            if (rtbConsolaLogs.InvokeRequired)
+            {
+                rtbConsolaLogs.Invoke(new Action(() => AgregarLog(mensaje)));
+                return;
+            }
+            string tiempo = DateTime.Now.ToString("HH:mm:ss");
+            rtbConsolaLogs.AppendText($"[{tiempo}] {mensaje}{Environment.NewLine}");
+            rtbConsolaLogs.ScrollToCaret();
         }
 
         /// <summary>
@@ -93,10 +107,10 @@ namespace Proyecto1_SW4
                 item.SubItems.Add(reg.Edad.ToString());
                 item.SubItems.Add(reg.Genero ?? "");
                 item.SubItems.Add(reg.Email ?? "");
-                
+
                 // Asociamos el objeto original al Tag para fácil recuperación si se selecciona
                 item.Tag = reg;
-                
+
                 lvRegistros.Items.Add(item);
             }
 
@@ -122,6 +136,8 @@ namespace Proyecto1_SW4
             lblEstado.ForeColor = System.Drawing.Color.Orange;
             btnConectar.Enabled = false;
 
+            AgregarLog($"Iniciando conexión HTTP GET a: {url}");
+
             // Invocación asíncrona a la API
             var resultado = await _apiService.ObtenerDatosAsync(url);
 
@@ -131,21 +147,31 @@ namespace Proyecto1_SW4
             {
                 lblEstado.Text = "Conectado";
                 lblEstado.ForeColor = System.Drawing.Color.Green;
-                
+
                 // Reemplazamos la colección central
                 if (resultado.Registros != null)
                 {
                     _registros = resultado.Registros;
+                    AgregarLog($"Respuesta HTTP exitosa. Se descargaron {_registros.Count} registros. Actualizando interfaz visual...");
                     ActualizarVistas();
                 }
 
-                // Actualizamos la vista previa con el contenido original
-                richTextBox1.Text = resultado.JsonRaw;
-                
+                // Formateamos el JSON para que se vea ordenado y legible en la vista previa
+                try
+                {
+                    var parsedJson = System.Text.Json.JsonDocument.Parse(resultado.JsonRaw ?? "{}");
+                    richTextBox1.Text = System.Text.Json.JsonSerializer.Serialize(parsedJson, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+                }
+                catch
+                {
+                    richTextBox1.Text = resultado.JsonRaw;
+                }
+
                 MessageBox.Show($"Se obtuvieron {_registros.Count} registros correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                AgregarLog($"ERROR crítico de conexión: {resultado.MensajeError}");
                 lblEstado.Text = "Error de conexión";
                 lblEstado.ForeColor = System.Drawing.Color.Red;
                 MessageBox.Show(resultado.MensajeError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,7 +192,7 @@ namespace Proyecto1_SW4
             }
 
             bool esJson = rBtnJSON.Checked;
-            
+
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = esJson ? "JSON Files (*.json)|*.json" : "CSV Files (*.csv)|*.csv";
@@ -177,7 +203,9 @@ namespace Proyecto1_SW4
                 {
                     lblDescargando.Text = "Guardando archivo...";
                     pbBarraPDescarga.Value = 0;
-                    
+
+                    AgregarLog($"Iniciando rutina de guardado en formato {(esJson ? "JSON" : "CSV")}...");
+
                     // Simulamos un tiempo de "descarga/procesamiento" para la barra de progreso
                     // para cumplir con la necesidad del laboratorio de mostrar una barra activa
                     for (int i = 0; i <= 100; i += 20)
@@ -205,19 +233,21 @@ namespace Proyecto1_SW4
 
                     if (exito)
                     {
+                        AgregarLog($"Archivo guardado correctamente y persiste en disco. Ruta: {sfd.FileName}");
                         lblDescargando.Text = "Descarga completada";
                         _ultimoArchivoGuardado = sfd.FileName;
-                        
+
                         // Actualizar información del archivo
                         FileInfo fi = new FileInfo(sfd.FileName);
                         lblArchivo.Text = fi.Name;
                         // Cálculo del tamaño de archivo a un formato legible (KB)
                         lblKB.Text = $"{(fi.Length / 1024.0):F2} KB";
-                        
+
                         MessageBox.Show("Archivo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
+                        AgregarLog($"FALLO al escribir archivo local: {msjError}");
                         lblDescargando.Text = "Error al descargar";
                         pbBarraPDescarga.Value = 0;
                         lblPorcentaje.Text = "0%";
@@ -257,15 +287,15 @@ namespace Proyecto1_SW4
 
             // Inyectamos a la colección central
             _registros.Add(nuevoRegistro);
-            
+
             // Actualizamos visualización
             ActualizarVistas();
-            
+
             // Limpiamos cajas de texto
             txtNombreNuevo.Clear();
             txtApellidoNuevo.Clear();
             txtEmailNuevo.Clear();
-            
+
             MessageBox.Show("Registro agregado a la lista.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -273,7 +303,7 @@ namespace Proyecto1_SW4
         /// Intenta abrir el último archivo guardado utilizando la aplicación del sistema
         /// configurada por defecto o el Bloc de notas.
         /// </summary>
-        private void lblVistaPrevia_Click(object sender, EventArgs e) 
+        private void lblVistaPrevia_Click(object sender, EventArgs e)
         {
             // El usuario debe hacer doble click o usar un botón. Como pide RF11, 
             // usaré el evento seleccionado en el combobox o un método dedicado si se requiriera,
@@ -320,7 +350,7 @@ namespace Proyecto1_SW4
                 MessageBox.Show("No hay ningún archivo descargado para imprimir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            
+
             MessageBox.Show("La funcionalidad de impresión directa ha sido deshabilitada. Puede imprimir desde el archivo abierto.", "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -329,7 +359,7 @@ namespace Proyecto1_SW4
         private void label1_Click(object sender, EventArgs e) { }
         private void label18_Click(object sender, EventArgs e) { }
         private void label17_Click(object sender, EventArgs e) { }
-        
+
         // Manejadores para la sincronización entre ListBox y ListView
         private void lstRegistros_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -346,6 +376,11 @@ namespace Proyecto1_SW4
             {
                 lstRegistros.SelectedIndex = lvRegistros.SelectedIndices[0];
             }
+        }
+
+        private void pPunto5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

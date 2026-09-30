@@ -68,18 +68,19 @@ namespace Proyecto1_SW4
             tabPestañas = new TabControl();
             tabVizualizacionPanel = new TabPage();
             tbPageVisualizacion = new TabPage();
+            rtbConsolaLogs = new RichTextBox();
             tabPageLista = new TabPage();
             lstRegistros = new ListBox();
             tabPageDetalles = new TabPage();
             lvRegistros = new ListView();
             tabPageAgregar = new TabPage();
-            txtNombreNuevo = new TextBox();
-            txtApellidoNuevo = new TextBox();
-            txtEmailNuevo = new TextBox();
-            lblNombreNuevo = new Label();
-            lblApellidoNuevo = new Label();
-            lblEmailNuevo = new Label();
             btnAgregarNuevo = new Button();
+            txtEmailNuevo = new TextBox();
+            txtApellidoNuevo = new TextBox();
+            txtNombreNuevo = new TextBox();
+            lblEmailNuevo = new Label();
+            lblApellidoNuevo = new Label();
+            lblNombreNuevo = new Label();
             label12 = new Label();
             pPunto4 = new Panel();
             comBoxArchivos = new ComboBox();
@@ -97,6 +98,8 @@ namespace Proyecto1_SW4
             pDescarga.SuspendLayout();
             pArchivo.SuspendLayout();
             tabPestañas.SuspendLayout();
+            tabVizualizacionPanel.SuspendLayout();
+            tbPageVisualizacion.SuspendLayout();
             tabPageLista.SuspendLayout();
             tabPageDetalles.SuspendLayout();
             tabPageAgregar.SuspendLayout();
@@ -383,6 +386,7 @@ namespace Proyecto1_SW4
             pPunto5.Name = "pPunto5";
             pPunto5.Size = new Size(917, 765);
             pPunto5.TabIndex = 2;
+            pPunto5.Paint += pPunto5_Paint;
             // 
             // pDescarga
             // 
@@ -442,7 +446,6 @@ namespace Proyecto1_SW4
             pArchivo.Controls.Add(lblTam);
             pArchivo.Controls.Add(lblArchivo);
             pArchivo.Controls.Add(lblArchivoDescargado);
-            pArchivo.Controls.Add(richTextBox1);
             pArchivo.Location = new Point(35, 561);
             pArchivo.Name = "pArchivo";
             pArchivo.Size = new Size(834, 75);
@@ -488,9 +491,12 @@ namespace Proyecto1_SW4
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(13, 7);
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            richTextBox1.ReadOnly = true;
+            richTextBox1.BackColor = SystemColors.Window;
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(99, 56);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
@@ -512,6 +518,7 @@ namespace Proyecto1_SW4
             // tabVizualizacionPanel
             // 
             tabVizualizacionPanel.BackColor = Color.Transparent;
+            tabVizualizacionPanel.Controls.Add(richTextBox1);
             tabVizualizacionPanel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabVizualizacionPanel.Location = new Point(4, 29);
             tabVizualizacionPanel.Name = "tabVizualizacionPanel";
@@ -522,14 +529,28 @@ namespace Proyecto1_SW4
             // 
             // tbPageVisualizacion
             // 
+            tbPageVisualizacion.Controls.Add(rtbConsolaLogs);
             tbPageVisualizacion.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tbPageVisualizacion.Location = new Point(4, 29);
             tbPageVisualizacion.Name = "tbPageVisualizacion";
             tbPageVisualizacion.Padding = new Padding(3);
-            tbPageVisualizacion.Size = new Size(833, 455);
+            tbPageVisualizacion.Size = new Size(833, 466);
             tbPageVisualizacion.TabIndex = 1;
             tbPageVisualizacion.Text = "Información";
             tbPageVisualizacion.UseVisualStyleBackColor = true;
+            // 
+            // rtbConsolaLogs
+            // 
+            rtbConsolaLogs.BackColor = Color.Black;
+            rtbConsolaLogs.Dock = DockStyle.Fill;
+            rtbConsolaLogs.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbConsolaLogs.ForeColor = Color.LimeGreen;
+            rtbConsolaLogs.Location = new Point(3, 3);
+            rtbConsolaLogs.Name = "rtbConsolaLogs";
+            rtbConsolaLogs.ReadOnly = true;
+            rtbConsolaLogs.Size = new Size(827, 460);
+            rtbConsolaLogs.TabIndex = 0;
+            rtbConsolaLogs.Text = "";
             // 
             // tabPageLista
             // 
@@ -537,7 +558,7 @@ namespace Proyecto1_SW4
             tabPageLista.Location = new Point(4, 29);
             tabPageLista.Name = "tabPageLista";
             tabPageLista.Padding = new Padding(3);
-            tabPageLista.Size = new Size(833, 455);
+            tabPageLista.Size = new Size(833, 466);
             tabPageLista.TabIndex = 2;
             tabPageLista.Text = "Lista (ListBox)";
             tabPageLista.UseVisualStyleBackColor = true;
@@ -546,10 +567,9 @@ namespace Proyecto1_SW4
             // 
             lstRegistros.Dock = DockStyle.Fill;
             lstRegistros.FormattingEnabled = true;
-            lstRegistros.ItemHeight = 20;
             lstRegistros.Location = new Point(3, 3);
             lstRegistros.Name = "lstRegistros";
-            lstRegistros.Size = new Size(827, 449);
+            lstRegistros.Size = new Size(827, 460);
             lstRegistros.TabIndex = 0;
             lstRegistros.SelectedIndexChanged += lstRegistros_SelectedIndexChanged;
             // 
@@ -559,7 +579,7 @@ namespace Proyecto1_SW4
             tabPageDetalles.Location = new Point(4, 29);
             tabPageDetalles.Name = "tabPageDetalles";
             tabPageDetalles.Padding = new Padding(3);
-            tabPageDetalles.Size = new Size(833, 455);
+            tabPageDetalles.Size = new Size(833, 466);
             tabPageDetalles.TabIndex = 3;
             tabPageDetalles.Text = "Detalles (ListView)";
             tabPageDetalles.UseVisualStyleBackColor = true;
@@ -571,7 +591,7 @@ namespace Proyecto1_SW4
             lvRegistros.GridLines = true;
             lvRegistros.Location = new Point(3, 3);
             lvRegistros.Name = "lvRegistros";
-            lvRegistros.Size = new Size(827, 449);
+            lvRegistros.Size = new Size(827, 460);
             lvRegistros.TabIndex = 0;
             lvRegistros.UseCompatibleStateImageBehavior = false;
             lvRegistros.View = View.Details;
@@ -589,58 +609,10 @@ namespace Proyecto1_SW4
             tabPageAgregar.Location = new Point(4, 29);
             tabPageAgregar.Name = "tabPageAgregar";
             tabPageAgregar.Padding = new Padding(3);
-            tabPageAgregar.Size = new Size(833, 455);
+            tabPageAgregar.Size = new Size(833, 466);
             tabPageAgregar.TabIndex = 4;
             tabPageAgregar.Text = "Agregar Registro";
             tabPageAgregar.UseVisualStyleBackColor = true;
-            // 
-            // lblNombreNuevo
-            // 
-            lblNombreNuevo.AutoSize = true;
-            lblNombreNuevo.Location = new Point(20, 20);
-            lblNombreNuevo.Name = "lblNombreNuevo";
-            lblNombreNuevo.Size = new Size(67, 20);
-            lblNombreNuevo.TabIndex = 0;
-            lblNombreNuevo.Text = "Nombre:";
-            // 
-            // txtNombreNuevo
-            // 
-            txtNombreNuevo.Location = new Point(100, 17);
-            txtNombreNuevo.Name = "txtNombreNuevo";
-            txtNombreNuevo.Size = new Size(200, 27);
-            txtNombreNuevo.TabIndex = 1;
-            // 
-            // lblApellidoNuevo
-            // 
-            lblApellidoNuevo.AutoSize = true;
-            lblApellidoNuevo.Location = new Point(20, 60);
-            lblApellidoNuevo.Name = "lblApellidoNuevo";
-            lblApellidoNuevo.Size = new Size(69, 20);
-            lblApellidoNuevo.TabIndex = 2;
-            lblApellidoNuevo.Text = "Apellido:";
-            // 
-            // txtApellidoNuevo
-            // 
-            txtApellidoNuevo.Location = new Point(100, 57);
-            txtApellidoNuevo.Name = "txtApellidoNuevo";
-            txtApellidoNuevo.Size = new Size(200, 27);
-            txtApellidoNuevo.TabIndex = 3;
-            // 
-            // lblEmailNuevo
-            // 
-            lblEmailNuevo.AutoSize = true;
-            lblEmailNuevo.Location = new Point(20, 100);
-            lblEmailNuevo.Name = "lblEmailNuevo";
-            lblEmailNuevo.Size = new Size(49, 20);
-            lblEmailNuevo.TabIndex = 4;
-            lblEmailNuevo.Text = "Email:";
-            // 
-            // txtEmailNuevo
-            // 
-            txtEmailNuevo.Location = new Point(100, 97);
-            txtEmailNuevo.Name = "txtEmailNuevo";
-            txtEmailNuevo.Size = new Size(200, 27);
-            txtEmailNuevo.TabIndex = 5;
             // 
             // btnAgregarNuevo
             // 
@@ -653,6 +625,54 @@ namespace Proyecto1_SW4
             btnAgregarNuevo.Text = "Agregar";
             btnAgregarNuevo.UseVisualStyleBackColor = false;
             btnAgregarNuevo.Click += btnAgregarNuevo_Click;
+            // 
+            // txtEmailNuevo
+            // 
+            txtEmailNuevo.Location = new Point(100, 97);
+            txtEmailNuevo.Name = "txtEmailNuevo";
+            txtEmailNuevo.Size = new Size(200, 27);
+            txtEmailNuevo.TabIndex = 5;
+            // 
+            // txtApellidoNuevo
+            // 
+            txtApellidoNuevo.Location = new Point(100, 57);
+            txtApellidoNuevo.Name = "txtApellidoNuevo";
+            txtApellidoNuevo.Size = new Size(200, 27);
+            txtApellidoNuevo.TabIndex = 3;
+            // 
+            // txtNombreNuevo
+            // 
+            txtNombreNuevo.Location = new Point(100, 17);
+            txtNombreNuevo.Name = "txtNombreNuevo";
+            txtNombreNuevo.Size = new Size(200, 27);
+            txtNombreNuevo.TabIndex = 1;
+            // 
+            // lblEmailNuevo
+            // 
+            lblEmailNuevo.AutoSize = true;
+            lblEmailNuevo.Location = new Point(20, 100);
+            lblEmailNuevo.Name = "lblEmailNuevo";
+            lblEmailNuevo.Size = new Size(51, 20);
+            lblEmailNuevo.TabIndex = 4;
+            lblEmailNuevo.Text = "Email:";
+            // 
+            // lblApellidoNuevo
+            // 
+            lblApellidoNuevo.AutoSize = true;
+            lblApellidoNuevo.Location = new Point(20, 60);
+            lblApellidoNuevo.Name = "lblApellidoNuevo";
+            lblApellidoNuevo.Size = new Size(71, 20);
+            lblApellidoNuevo.TabIndex = 2;
+            lblApellidoNuevo.Text = "Apellido:";
+            // 
+            // lblNombreNuevo
+            // 
+            lblNombreNuevo.AutoSize = true;
+            lblNombreNuevo.Location = new Point(20, 20);
+            lblNombreNuevo.Name = "lblNombreNuevo";
+            lblNombreNuevo.Size = new Size(71, 20);
+            lblNombreNuevo.TabIndex = 0;
+            lblNombreNuevo.Text = "Nombre:";
             // 
             // label12
             // 
@@ -750,11 +770,12 @@ namespace Proyecto1_SW4
             pDescarga.PerformLayout();
             pArchivo.ResumeLayout(false);
             pArchivo.PerformLayout();
+            tabPestañas.ResumeLayout(false);
+            tabVizualizacionPanel.ResumeLayout(false);
             tabPageLista.ResumeLayout(false);
             tabPageDetalles.ResumeLayout(false);
             tabPageAgregar.ResumeLayout(false);
             tabPageAgregar.PerformLayout();
-            tabPestañas.ResumeLayout(false);
             pPunto4.ResumeLayout(false);
             pPunto4.PerformLayout();
             ResumeLayout(false);
@@ -788,6 +809,7 @@ namespace Proyecto1_SW4
         private TabControl tabPestañas;
         private TabPage tabVizualizacionPanel;
         private TabPage tbPageVisualizacion;
+        private RichTextBox rtbConsolaLogs;
         private Label label12;
         private ComboBox comBoxArchivos;
         private Label lblKB;

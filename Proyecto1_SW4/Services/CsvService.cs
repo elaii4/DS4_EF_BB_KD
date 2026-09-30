@@ -75,7 +75,7 @@ namespace Proyecto1_SW4.Services
         /// Entrada: Ruta del archivo.
         /// Salida: Tupla con éxito, lista de registros leídos y posible mensaje de error.
         /// </summary>
-        public async Task<(bool Exito, List<Registro> Registros, string MensajeError)> LeerCsvAsync(string rutaArchivo)
+        public async Task<(bool Exito, List<Registro>? Registros, string MensajeError)> LeerCsvAsync(string rutaArchivo)
         {
             try
             {
