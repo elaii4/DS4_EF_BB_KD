@@ -28,6 +28,7 @@ namespace Proyecto2_
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.lblProviderStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -39,18 +40,18 @@ namespace Proyecto2_
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(280, 46);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Configurar Kodu";
+            this.lblTitle.Text = "Configura Agente";
             // 
             // lblSubtitle
             // 
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
             this.lblSubtitle.Location = new System.Drawing.Point(35, 70);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(325, 23);
             this.lblSubtitle.TabIndex = 11;
-            this.lblSubtitle.Text = "Define cómo Kodu ayudará a tu negocio.";
+            this.lblSubtitle.Text = "Define cómo el orientador ayudará a detectar phishing.";
             // 
             // lblProvider
             // 
@@ -65,11 +66,11 @@ namespace Proyecto2_
             // 
             // cmbProvider
             // 
-            this.cmbProvider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(80)))), ((int)(((byte)(140)))));
+            this.cmbProvider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.cmbProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProvider.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbProvider.ForeColor = System.Drawing.Color.White;
+            this.cmbProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.cmbProvider.FormattingEnabled = true;
             this.cmbProvider.Items.AddRange(new object[] {
             "OpenAI",
@@ -80,6 +81,17 @@ namespace Proyecto2_
             this.cmbProvider.Name = "cmbProvider";
             this.cmbProvider.Size = new System.Drawing.Size(400, 31);
             this.cmbProvider.TabIndex = 2;
+            // 
+            // lblProviderStatus
+            // 
+            this.lblProviderStatus.AutoSize = true;
+            this.lblProviderStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblProviderStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(197)))), ((int)(((byte)(94)))));
+            this.lblProviderStatus.Location = new System.Drawing.Point(445, 140);
+            this.lblProviderStatus.Name = "lblProviderStatus";
+            this.lblProviderStatus.Size = new System.Drawing.Size(120, 23);
+            this.lblProviderStatus.TabIndex = 12;
+            this.lblProviderStatus.Text = "🟢 Conectado";
             // 
             // lblProblem
             // 
@@ -94,16 +106,16 @@ namespace Proyecto2_
             // 
             // txtProblem
             // 
-            this.txtProblem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(80)))), ((int)(((byte)(140)))));
+            this.txtProblem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.txtProblem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtProblem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProblem.ForeColor = System.Drawing.Color.White;
+            this.txtProblem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.txtProblem.Location = new System.Drawing.Point(35, 206);
             this.txtProblem.Multiline = true;
             this.txtProblem.Name = "txtProblem";
             this.txtProblem.Size = new System.Drawing.Size(400, 60);
             this.txtProblem.TabIndex = 4;
-            this.txtProblem.Text = "Ayudar a pequeños negocios a analizar ventas, precios y promociones para tomar mejores decisiones comerciales.";
+            this.txtProblem.Text = "Orientar a los usuarios para identificar señales de riesgo de phishing en correos electrónicos sospechosos.";
             // 
             // lblInstructions
             // 
@@ -118,24 +130,24 @@ namespace Proyecto2_
             // 
             // rtbInstructions
             // 
-            this.rtbInstructions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(80)))), ((int)(((byte)(140)))));
+            this.rtbInstructions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.rtbInstructions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbInstructions.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtbInstructions.ForeColor = System.Drawing.Color.White;
+            this.rtbInstructions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.rtbInstructions.Location = new System.Drawing.Point(35, 306);
             this.rtbInstructions.Name = "rtbInstructions";
             this.rtbInstructions.Size = new System.Drawing.Size(400, 150);
             this.rtbInstructions.TabIndex = 6;
-            this.rtbInstructions.Text = "Eres Kodu, un asistente especializado en pequeños negocios.\nAyuda al usuario a analizar ventas, precios, promociones y situaciones comerciales.\nHaz preguntas cuando falten datos.\nProporciona recomendaciones prácticas y fáciles de entender.\nUtiliza la herramienta comercial cuando necesites realizar cálculos.\nNo inventes datos.";
+            this.rtbInstructions.Text = "Eres un Orientador de señales de phishing.\nAyuda al usuario a analizar correos electrónicos sospechosos identificando indicadores de riesgo como remitentes extraños, enlaces engañosos, urgencia injustificada y archivos adjuntos peligrosos.\nHaz preguntas sobre el contenido del correo sin pedirles que hagan clic en nada.\nProporciona una lista de indicadores de riesgo detectados.\nNo abras enlaces ni verifiques su contenido real.\nNo inventes datos.";
             // 
             // btnCreate
             // 
-            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(100)))));
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreate.FlatAppearance.BorderSize = 0;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btnCreate.Location = new System.Drawing.Point(620, 410);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(200, 45);
@@ -145,12 +157,13 @@ namespace Proyecto2_
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(100)))), ((int)(((byte)(150)))));
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(213)))), ((int)(((byte)(225)))));
             this.btnCancel.Location = new System.Drawing.Point(470, 410);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(130, 45);
@@ -173,8 +186,9 @@ namespace Proyecto2_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(34)))), ((int)(((byte)(79)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(860, 520);
+            this.Controls.Add(this.lblProviderStatus);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnCancel);
@@ -205,6 +219,7 @@ namespace Proyecto2_
         private System.Windows.Forms.RichTextBox rtbInstructions;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblProviderStatus;
         private System.Windows.Forms.Label lblStatus;
     }
 }

@@ -35,8 +35,10 @@ namespace Proyecto2_
             lblCategories = new Label();
             pnlInput = new Panel();
             btnSend = new Button();
-            btnSettings = new Button();
             txtMessage = new TextBox();
+            btnSettings = new Button();
+            btnNewChat = new Button();
+            flpChat = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             pnlInput.SuspendLayout();
             SuspendLayout();
@@ -56,7 +58,6 @@ namespace Proyecto2_
             // lblGreeting
             // 
             lblGreeting.Anchor = AnchorStyles.None;
-            lblGreeting.AutoSize = false;
             lblGreeting.BackColor = Color.Transparent;
             lblGreeting.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
             lblGreeting.ForeColor = Color.White;
@@ -64,41 +65,39 @@ namespace Proyecto2_
             lblGreeting.Name = "lblGreeting";
             lblGreeting.Size = new Size(600, 54);
             lblGreeting.TabIndex = 1;
-            lblGreeting.Text = "Hola, soy Kodu";
+            lblGreeting.Text = "Kodu: Escudo Anti-Phishing";
             lblGreeting.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblSubtitle
             // 
             lblSubtitle.Anchor = AnchorStyles.None;
-            lblSubtitle.AutoSize = false;
             lblSubtitle.BackColor = Color.Transparent;
             lblSubtitle.Font = new Font("Segoe UI", 12F);
-            lblSubtitle.ForeColor = Color.FromArgb(200, 220, 255);
+            lblSubtitle.ForeColor = Color.FromArgb(148, 163, 184);
             lblSubtitle.Location = new Point(100, 285);
             lblSubtitle.Name = "lblSubtitle";
             lblSubtitle.Size = new Size(600, 28);
             lblSubtitle.TabIndex = 2;
-            lblSubtitle.Text = "Te ayudo a tomar mejores decisiones para tu negocio.";
+            lblSubtitle.Text = "Pega ese correo dudoso y descubriré si intentan engañarte.";
             lblSubtitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblCategories
             // 
             lblCategories.Anchor = AnchorStyles.None;
-            lblCategories.AutoSize = false;
             lblCategories.BackColor = Color.Transparent;
             lblCategories.Font = new Font("Segoe UI", 10F);
-            lblCategories.ForeColor = Color.LightGray;
+            lblCategories.ForeColor = Color.FromArgb(100, 116, 139);
             lblCategories.Location = new Point(100, 440);
             lblCategories.Name = "lblCategories";
             lblCategories.Size = new Size(600, 23);
             lblCategories.TabIndex = 4;
-            lblCategories.Text = "Ventas · Precios · Promociones · Clientes";
+            lblCategories.Text = "Protección activa: Enlaces Falsos · Remitentes Engañosos · Archivos Peligrosos";
             lblCategories.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlInput
             // 
             pnlInput.Anchor = AnchorStyles.None;
-            pnlInput.BackColor = Color.FromArgb(40, 80, 140);
+            pnlInput.BackColor = Color.FromArgb(30, 41, 59);
             pnlInput.Controls.Add(btnSend);
             pnlInput.Controls.Add(txtMessage);
             pnlInput.Location = new Point(100, 360);
@@ -114,7 +113,7 @@ namespace Proyecto2_
             btnSend.FlatAppearance.BorderSize = 0;
             btnSend.FlatStyle = FlatStyle.Flat;
             btnSend.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            btnSend.ForeColor = Color.FromArgb(12, 34, 79);
+            btnSend.ForeColor = Color.FromArgb(15, 23, 42);
             btnSend.Location = new Point(546, 12);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(40, 40);
@@ -122,13 +121,27 @@ namespace Proyecto2_
             btnSend.Text = "↑";
             btnSend.UseVisualStyleBackColor = false;
             // 
+            // txtMessage
+            // 
+            txtMessage.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtMessage.BackColor = Color.FromArgb(30, 41, 59);
+            txtMessage.BorderStyle = BorderStyle.None;
+            txtMessage.Font = new Font("Segoe UI", 12F);
+            txtMessage.ForeColor = Color.FromArgb(203, 213, 225);
+            txtMessage.Location = new Point(25, 18);
+            txtMessage.Name = "txtMessage";
+            txtMessage.PlaceholderText = "Pega aquí el contenido de ese correo sospechoso...";
+            txtMessage.Size = new Size(510, 27);
+            txtMessage.TabIndex = 0;
+            txtMessage.KeyDown += txtMessage_KeyDown;
+            // 
             // btnSettings
             // 
             btnSettings.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSettings.BackColor = Color.Transparent;
             btnSettings.Cursor = Cursors.Hand;
             btnSettings.FlatAppearance.BorderSize = 0;
-            btnSettings.FlatAppearance.MouseOverBackColor = Color.FromArgb(40, 80, 140);
+            btnSettings.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 41, 59);
             btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("Segoe UI", 12F);
             btnSettings.ForeColor = Color.LightGray;
@@ -139,42 +152,60 @@ namespace Proyecto2_
             btnSettings.Text = "⚙️";
             btnSettings.UseVisualStyleBackColor = false;
             // 
-            // txtMessage
+            // btnNewChat
             // 
-            txtMessage.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtMessage.BackColor = Color.FromArgb(40, 80, 140);
-            txtMessage.BorderStyle = BorderStyle.None;
-            txtMessage.Font = new Font("Segoe UI", 12F);
-            txtMessage.ForeColor = Color.LightGray;
-            txtMessage.Location = new Point(25, 18);
-            txtMessage.Name = "txtMessage";
-            txtMessage.Size = new Size(510, 27);
-            txtMessage.TabIndex = 0;
-            txtMessage.Text = "Escribe tu mensaje...";
-            txtMessage.Enter += txtMessage_Enter;
-            txtMessage.Leave += txtMessage_Leave;
+            btnNewChat.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnNewChat.BackColor = Color.Transparent;
+            btnNewChat.Cursor = Cursors.Hand;
+            btnNewChat.FlatAppearance.BorderSize = 0;
+            btnNewChat.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 41, 59);
+            btnNewChat.FlatStyle = FlatStyle.Flat;
+            btnNewChat.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnNewChat.ForeColor = Color.LightGray;
+            btnNewChat.Location = new Point(730, 70);
+            btnNewChat.Name = "btnNewChat";
+            btnNewChat.Size = new Size(40, 40);
+            btnNewChat.TabIndex = 6;
+            btnNewChat.Text = "↻";
+            btnNewChat.UseVisualStyleBackColor = false;
+            btnNewChat.Visible = false;
+            btnNewChat.Click += btnNewChat_Click;
+            // 
+            // flpChat
+            // 
+            flpChat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flpChat.AutoScroll = true;
+            flpChat.BackColor = Color.FromArgb(15, 23, 42);
+            flpChat.FlowDirection = FlowDirection.TopDown;
+            flpChat.Location = new Point(100, 50);
+            flpChat.Name = "flpChat";
+            flpChat.Size = new Size(600, 400);
+            flpChat.TabIndex = 5;
+            flpChat.Visible = false;
+            flpChat.WrapContents = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(12, 34, 79);
+            BackColor = Color.FromArgb(15, 23, 42);
             ClientSize = new Size(800, 600);
             Controls.Add(btnSettings);
+            Controls.Add(btnNewChat);
             Controls.Add(lblCategories);
             Controls.Add(pnlInput);
+            Controls.Add(flpChat);
             Controls.Add(lblSubtitle);
             Controls.Add(lblGreeting);
             Controls.Add(pbLogo);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Kodu Chat";
+            Text = "Orientador de Phishing";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             pnlInput.ResumeLayout(false);
             pnlInput.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -187,5 +218,7 @@ namespace Proyecto2_
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnNewChat;
+        private System.Windows.Forms.FlowLayoutPanel flpChat;
     }
 }

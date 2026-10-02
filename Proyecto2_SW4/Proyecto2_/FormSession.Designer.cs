@@ -17,176 +17,176 @@ namespace Proyecto2_
 
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblAgentName = new System.Windows.Forms.Label();
-            this.lblProvider = new System.Windows.Forms.Label();
-            this.lblProblem = new System.Windows.Forms.Label();
-            this.lblArea = new System.Windows.Forms.Label();
-            this.lblTool = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.btnNewSession = new System.Windows.Forms.Button();
-            this.btnConfig = new System.Windows.Forms.Button();
-            this.pbAgentIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAgentIcon)).BeginInit();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSession));
+            lblTitle = new Label();
+            lblAgentName = new Label();
+            lblProvider = new Label();
+            lblProblem = new Label();
+            lblArea = new Label();
+            lblTool = new Label();
+            lblStatus = new Label();
+            btnNewSession = new Button();
+            btnConfig = new Button();
+            pbAgentIcon = new PictureBox();
+            lblSubtitle = new Label();
+            ((System.ComponentModel.ISupportInitialize)pbAgentIcon).BeginInit();
+            SuspendLayout();
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(30, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(123, 54);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Kodu";
-            // 
-            // lblSubtitle
-            // 
-            this.lblSubtitle = new System.Windows.Forms.Label();
-            this.lblSubtitle.AutoSize = true;
-            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.lblSubtitle.Location = new System.Drawing.Point(35, 74);
-            this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(107, 23);
-            this.lblSubtitle.TabIndex = 9;
-            this.lblSubtitle.Text = "Sesión activa";
-            // 
-            // pbAgentIcon
-            // 
-            this.pbAgentIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pbAgentIcon.Location = new System.Drawing.Point(300, 20);
-            this.pbAgentIcon.Name = "pbAgentIcon";
-            this.pbAgentIcon.Size = new System.Drawing.Size(60, 60);
-            this.pbAgentIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbAgentIcon.TabIndex = 1;
-            this.pbAgentIcon.TabStop = false;
-            this.pbAgentIcon.Image = System.Drawing.Image.FromFile(@"c:\Users\VICTUS15FB\source\repos\Proyecto2_\Proyecto2_\Resources\kodu_logo.png");
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(30, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(122, 54);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Kodu";
+            lblTitle.Click += lblTitle_Click;
             // 
             // lblAgentName
             // 
-            this.lblAgentName.AutoSize = true;
-            this.lblAgentName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAgentName.ForeColor = System.Drawing.Color.LightGray;
-            this.lblAgentName.Location = new System.Drawing.Point(35, 110);
-            this.lblAgentName.Name = "lblAgentName";
-            this.lblAgentName.Size = new System.Drawing.Size(142, 28);
-            this.lblAgentName.TabIndex = 2;
-            this.lblAgentName.Text = "Agente: Kodu";
+            lblAgentName.AutoSize = true;
+            lblAgentName.Font = new Font("Segoe UI", 12F);
+            lblAgentName.ForeColor = Color.FromArgb(203, 213, 225);
+            lblAgentName.Location = new Point(35, 110);
+            lblAgentName.Name = "lblAgentName";
+            lblAgentName.Size = new Size(286, 28);
+            lblAgentName.TabIndex = 2;
+            lblAgentName.Text = "Agente: Orientador de Phishing";
             // 
             // lblProvider
             // 
-            this.lblProvider.AutoSize = true;
-            this.lblProvider.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblProvider.ForeColor = System.Drawing.Color.LightGray;
-            this.lblProvider.Location = new System.Drawing.Point(35, 150);
-            this.lblProvider.Name = "lblProvider";
-            this.lblProvider.Size = new System.Drawing.Size(182, 28);
-            this.lblProvider.TabIndex = 3;
-            this.lblProvider.Text = "Proveedor: OpenAI";
+            lblProvider.AutoSize = true;
+            lblProvider.Font = new Font("Segoe UI", 12F);
+            lblProvider.ForeColor = Color.FromArgb(203, 213, 225);
+            lblProvider.Location = new Point(35, 150);
+            lblProvider.Name = "lblProvider";
+            lblProvider.Size = new Size(174, 28);
+            lblProvider.TabIndex = 3;
+            lblProvider.Text = "Proveedor: Gemini";
             // 
             // lblProblem
             // 
-            this.lblProblem.AutoSize = true;
-            this.lblProblem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblProblem.ForeColor = System.Drawing.Color.LightGray;
-            this.lblProblem.Location = new System.Drawing.Point(35, 180);
-            this.lblProblem.Name = "lblProblem";
-            this.lblProblem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblProblem.ForeColor = System.Drawing.Color.LightGray;
-            this.lblProblem.Location = new System.Drawing.Point(35, 190);
-            this.lblProblem.Name = "lblProblem";
-            this.lblProblem.Size = new System.Drawing.Size(315, 28);
-            this.lblProblem.TabIndex = 4;
-            this.lblProblem.Text = "Especialidad: Pequeños negocios";
+            lblProblem.AutoSize = true;
+            lblProblem.Font = new Font("Segoe UI", 12F);
+            lblProblem.ForeColor = Color.FromArgb(203, 213, 225);
+            lblProblem.Location = new Point(35, 190);
+            lblProblem.Name = "lblProblem";
+            lblProblem.Size = new Size(316, 28);
+            lblProblem.TabIndex = 4;
+            lblProblem.Text = "Especialidad: Seguridad de correos";
             // 
             // lblArea
             // 
-            this.lblArea.AutoSize = true;
-            this.lblArea.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblArea.ForeColor = System.Drawing.Color.LightGray;
-            this.lblArea.Location = new System.Drawing.Point(35, 230);
-            this.lblArea.Name = "lblArea";
-            this.lblArea.Size = new System.Drawing.Size(262, 28);
-            this.lblArea.TabIndex = 10;
-            this.lblArea.Text = "Área: Ventas y promociones";
+            lblArea.AutoSize = true;
+            lblArea.Font = new Font("Segoe UI", 12F);
+            lblArea.ForeColor = Color.FromArgb(203, 213, 225);
+            lblArea.Location = new Point(35, 230);
+            lblArea.Name = "lblArea";
+            lblArea.Size = new Size(135, 28);
+            lblArea.TabIndex = 10;
+            lblArea.Text = "Área: Phishing";
             // 
             // lblTool
             // 
-            this.lblTool.AutoSize = true;
-            this.lblTool.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTool.ForeColor = System.Drawing.Color.LightGray;
-            this.lblTool.Location = new System.Drawing.Point(35, 270);
-            this.lblTool.Name = "lblTool";
-            this.lblTool.Size = new System.Drawing.Size(350, 28);
-            this.lblTool.TabIndex = 5;
-            this.lblTool.Text = "Herramienta: Calculadora comercial";
+            lblTool.AutoSize = true;
+            lblTool.Font = new Font("Segoe UI", 12F);
+            lblTool.ForeColor = Color.FromArgb(203, 213, 225);
+            lblTool.Location = new Point(35, 270);
+            lblTool.Name = "lblTool";
+            lblTool.Size = new Size(301, 28);
+            lblTool.TabIndex = 5;
+            lblTool.Text = "Herramienta: Lista de indicadores";
             // 
             // lblStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(100)))));
-            this.lblStatus.Location = new System.Drawing.Point(35, 320);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(217, 28);
-            this.lblStatus.TabIndex = 6;
-            this.lblStatus.Text = "Estado: Sesión activa";
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblStatus.ForeColor = Color.FromArgb(100, 200, 100);
+            lblStatus.Location = new Point(35, 320);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(210, 28);
+            lblStatus.TabIndex = 6;
+            lblStatus.Text = "Estado: Sesión activa";
             // 
             // btnNewSession
             // 
-            this.btnNewSession.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(100)))));
-            this.btnNewSession.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNewSession.FlatAppearance.BorderSize = 0;
-            this.btnNewSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewSession.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNewSession.ForeColor = System.Drawing.Color.White;
-            this.btnNewSession.Location = new System.Drawing.Point(40, 380);
-            this.btnNewSession.Name = "btnNewSession";
-            this.btnNewSession.Size = new System.Drawing.Size(160, 45);
-            this.btnNewSession.TabIndex = 7;
-            this.btnNewSession.Text = "Nueva sesión";
-            this.btnNewSession.UseVisualStyleBackColor = false;
+            btnNewSession.BackColor = Color.FromArgb(255, 255, 255);
+            btnNewSession.Cursor = Cursors.Hand;
+            btnNewSession.FlatAppearance.BorderSize = 0;
+            btnNewSession.FlatStyle = FlatStyle.Flat;
+            btnNewSession.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnNewSession.ForeColor = Color.FromArgb(15, 23, 42);
+            btnNewSession.Location = new Point(40, 380);
+            btnNewSession.Name = "btnNewSession";
+            btnNewSession.Size = new Size(160, 45);
+            btnNewSession.TabIndex = 7;
+            btnNewSession.Text = "Nueva sesión";
+            btnNewSession.UseVisualStyleBackColor = false;
             // 
             // btnConfig
             // 
-            this.btnConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(80)))), ((int)(((byte)(140)))));
-            this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfig.FlatAppearance.BorderSize = 0;
-            this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfig.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConfig.ForeColor = System.Drawing.Color.White;
-            this.btnConfig.Location = new System.Drawing.Point(220, 380);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(160, 45);
-            this.btnConfig.TabIndex = 8;
-            this.btnConfig.Text = "Configuración";
-            this.btnConfig.UseVisualStyleBackColor = false;
+            btnConfig.BackColor = Color.Transparent;
+            btnConfig.Cursor = Cursors.Hand;
+            btnConfig.FlatAppearance.BorderColor = Color.FromArgb(148, 163, 184);
+            btnConfig.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 41, 59);
+            btnConfig.FlatStyle = FlatStyle.Flat;
+            btnConfig.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnConfig.ForeColor = Color.FromArgb(203, 213, 225);
+            btnConfig.Location = new Point(220, 380);
+            btnConfig.Name = "btnConfig";
+            btnConfig.Size = new Size(160, 45);
+            btnConfig.TabIndex = 8;
+            btnConfig.Text = "Configuración";
+            btnConfig.UseVisualStyleBackColor = false;
+            btnConfig.Click += btnConfig_Click_1;
+            // 
+            // pbAgentIcon
+            // 
+            pbAgentIcon.BackColor = Color.Transparent;
+            pbAgentIcon.Image = (Image)resources.GetObject("pbAgentIcon.Image");
+            pbAgentIcon.Location = new Point(300, 20);
+            pbAgentIcon.Name = "pbAgentIcon";
+            pbAgentIcon.Size = new Size(60, 60);
+            pbAgentIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            pbAgentIcon.TabIndex = 1;
+            pbAgentIcon.TabStop = false;
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(148, 163, 184);
+            lblSubtitle.Location = new Point(35, 74);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(108, 23);
+            lblSubtitle.TabIndex = 9;
+            lblSubtitle.Text = "Sesión activa";
             // 
             // FormSession
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(34)))), ((int)(((byte)(79)))));
-            this.ClientSize = new System.Drawing.Size(420, 460);
-            this.Controls.Add(this.btnConfig);
-            this.Controls.Add(this.btnNewSession);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.lblTool);
-            this.Controls.Add(this.lblArea);
-            this.Controls.Add(this.lblProblem);
-            this.Controls.Add(this.lblProvider);
-            this.Controls.Add(this.lblAgentName);
-            this.Controls.Add(this.pbAgentIcon);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblSubtitle);
-            this.Name = "FormSession";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sesión Activa";
-            ((System.ComponentModel.ISupportInitialize)(this.pbAgentIcon)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(15, 23, 42);
+            ClientSize = new Size(420, 460);
+            Controls.Add(btnConfig);
+            Controls.Add(btnNewSession);
+            Controls.Add(lblStatus);
+            Controls.Add(lblTool);
+            Controls.Add(lblArea);
+            Controls.Add(lblProblem);
+            Controls.Add(lblProvider);
+            Controls.Add(lblAgentName);
+            Controls.Add(pbAgentIcon);
+            Controls.Add(lblTitle);
+            Controls.Add(lblSubtitle);
+            Name = "FormSession";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Sesión Activa";
+            ((System.ComponentModel.ISupportInitialize)pbAgentIcon).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
